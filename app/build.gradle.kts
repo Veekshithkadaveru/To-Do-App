@@ -72,8 +72,8 @@ dependencies {
 
     // Dagger
     implementation("com.google.dagger:hilt-android:2.51.1")
-//    implementation("com.google.dagger:hilt-android-compiler:2.48")
     annotationProcessor ("com.google.dagger:hilt-android-compiler:2.48")
+    annotationProcessor("androidx.hilt:hilt-compiler:1.2.0")
 
     implementation("androidx.fragment:fragment-ktx:1.7.1")
     implementation("androidx.lifecycle:lifecycle-process:2.8.0")
