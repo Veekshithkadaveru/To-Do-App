@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+    id("com.google.dagger.hilt.android")
+    id("kotlin-kapt")
 
 }
 
@@ -65,15 +67,17 @@ dependencies {
     // Room
     implementation("androidx.room:room-runtime:2.6.1")
     implementation("androidx.room:room-ktx:2.6.1")
-    annotationProcessor ("androidx.room:room-compiler:2.6.1")
-    annotationProcessor ("android.arch.persistence.room:compiler:1.1.1")
+    kapt ("androidx.room:room-compiler:2.6.1")
+    kapt ("android.arch.persistence.room:compiler:1.1.1")
     // Datastore
     implementation("androidx.datastore:datastore-preferences:1.1.1")
 
     // Dagger
     implementation("com.google.dagger:hilt-android:2.51.1")
-    annotationProcessor ("com.google.dagger:hilt-android-compiler:2.48")
-    annotationProcessor("androidx.hilt:hilt-compiler:1.2.0")
+    kapt("com.google.dagger:hilt-android-compiler:2.51.1")
+    kapt("androidx.hilt:hilt-compiler:1.2.0")
+    implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
+
 
     implementation("androidx.fragment:fragment-ktx:1.7.1")
     implementation("androidx.lifecycle:lifecycle-process:2.8.0")
@@ -88,4 +92,7 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+}
+kapt {
+    correctErrorTypes = true
 }

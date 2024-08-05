@@ -34,5 +34,5 @@ fun PriorityItem(priority: Priority) {
 @Preview
 fun PriorityItemPreview()
 {
-    PriorityItem(priority = Priority.High)
+    PriorityItem(priority = Priority.Medium)
 }
