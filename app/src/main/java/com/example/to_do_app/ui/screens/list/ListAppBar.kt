@@ -29,6 +29,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.tooling.preview.Preview
@@ -88,7 +89,7 @@ fun DefaultListAppBar(
     TopAppBar(
         title = {
             Text(
-                text = "Tasks",
+                text = stringResource(id = R.string.list_screen),
                 color = MaterialTheme.colorScheme.inversePrimary
             )
         },
@@ -220,8 +221,8 @@ fun SearchAppBar(
             placeholder = {
                 Text(
                     modifier = Modifier.alpha(0.74f),
-                    text = "Search",
-                    color = MaterialTheme.colorScheme.onPrimaryContainer,
+                    text = stringResource(id = R.string.search_placeholder),
+                    color = MaterialTheme.colorScheme.onPrimary,
 
                     )
             },
@@ -236,7 +237,7 @@ fun SearchAppBar(
                     onClick = { }) {
                     Icon(
                         imageVector = Icons.Filled.Search,
-                        contentDescription = "Search Icon",
+                        contentDescription = stringResource(id = R.string.search_icon),
                         tint = MaterialTheme.colorScheme.primary
                     )
                 }
@@ -262,7 +263,7 @@ fun SearchAppBar(
                 {
                     Icon(
                         imageVector = Icons.Filled.Close,
-                        contentDescription = "Close Icon",
+                        contentDescription = stringResource(id = R.string.close_icon),
                         tint = MaterialTheme.colorScheme.primary
                     )
                 }

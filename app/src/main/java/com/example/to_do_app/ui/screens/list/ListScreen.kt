@@ -13,7 +13,6 @@ import com.example.to_do_app.ui.viewmodels.SharedViewModel
 import com.example.to_do_app.util.SearchAppBarState
 
 
-
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun ListScreen(
@@ -21,7 +20,7 @@ fun ListScreen(
     sharedViewModel: SharedViewModel
 ) {
     val searchAppBarState: SearchAppBarState by sharedViewModel.searchAppBarState
-    val searchTextState:String by sharedViewModel.searchTextState
+    val searchTextState: String by sharedViewModel.searchTextState
 
     Scaffold(
         topBar = {
@@ -31,7 +30,9 @@ fun ListScreen(
                 searchTextState = searchTextState
             )
         },
-        content = {},
+        content = {
+            ListContent()
+        },
         floatingActionButton = {
             ListFab(onFabClicked = navigateToTaskScreen)
         }
