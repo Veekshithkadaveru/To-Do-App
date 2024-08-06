@@ -8,6 +8,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -18,24 +20,41 @@ import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import com.example.to_do_app.data.models.Priority
 import com.example.to_do_app.data.models.ToDoTask
 import com.example.to_do_app.ui.theme.LARGE_PADDING
+import com.example.to_do_app.ui.theme.MEDIUM_PADDING
 import com.example.to_do_app.ui.theme.PRIORITY_INDICATOR_SIZE
+import com.example.to_do_app.ui.theme.SMALL_PADDING
 import com.example.to_do_app.ui.theme.TASK_ITEM_ELEVATION
 import com.example.to_do_app.ui.theme.taskItemBackgroundColor
 import com.example.to_do_app.ui.theme.taskItemColor
 
 @Composable
-fun ListContent() {
-
+fun ListContent(
+    tasks: List<ToDoTask>,
+    navigateToTaskScreen: (taskId: Int) -> Unit
+) {
+    LazyColumn {
+        items(
+            items = tasks,
+            key = { task ->
+                task.id
+            }
+        ) { task ->
+            TaskItem(toDoTask = task, navigateToTaskScreen)
+        }
+    }
 }
 
 @Composable
 fun TaskItem(
     toDoTask: ToDoTask, navigateToTaskScreen: (taskId: Int) -> Unit
 ) {
-    Surface(modifier = Modifier.fillMaxWidth(),
+    Surface(modifier = Modifier
+        .fillMaxWidth(),
+        //.padding(all = 58.dp)
         color = taskItemBackgroundColor,
         shape = RectangleShape,
         tonalElevation = TASK_ITEM_ELEVATION,
@@ -44,7 +63,7 @@ fun TaskItem(
         }) {
         Column(
             modifier = Modifier
-                .padding(LARGE_PADDING)
+                .padding(top = 64.dp)
                 .fillMaxWidth()
         ) {
             Row {
