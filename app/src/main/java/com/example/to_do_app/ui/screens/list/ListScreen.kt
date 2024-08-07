@@ -1,6 +1,8 @@
 package com.example.to_do_app.ui.screens.list
 
 import android.annotation.SuppressLint
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.FloatingActionButton
@@ -11,9 +13,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Modifier
 import com.example.to_do_app.ui.viewmodels.SharedViewModel
 import com.example.to_do_app.util.SearchAppBarState
-
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
@@ -36,10 +38,11 @@ fun ListScreen(
                 searchTextState = searchTextState
             )
         },
-        content = {
+        content = { paddingValues ->
             ListContent(
                 tasks = allTasks,
-                navigateToTaskScreen = navigateToTaskScreen
+                navigateToTaskScreen = navigateToTaskScreen,
+                modifier = Modifier.padding(paddingValues)
             )
         },
         floatingActionButton = {

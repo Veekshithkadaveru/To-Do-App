@@ -1,12 +1,7 @@
 package com.example.to_do_app.ui.screens.list
 
 import androidx.compose.foundation.Canvas
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.MaterialTheme
@@ -32,7 +27,8 @@ import com.example.to_do_app.util.RequestState
 @Composable
 fun ListContent(
     tasks: RequestState<List<ToDoTask>>,
-    navigateToTaskScreen: (taskId: Int) -> Unit
+    navigateToTaskScreen: (taskId: Int) -> Unit,
+    modifier: Modifier = Modifier
 ) {
     if (tasks is RequestState.Success) {
         if (tasks.data.isEmpty()) {
@@ -40,7 +36,8 @@ fun ListContent(
         } else {
             DisplayTasks(
                 tasks = tasks.data,
-                navigateToTaskScreen = navigateToTaskScreen
+                navigateToTaskScreen = navigateToTaskScreen,
+                modifier = modifier
             )
         }
     }
@@ -49,9 +46,12 @@ fun ListContent(
 @Composable
 fun DisplayTasks(
     tasks: List<ToDoTask>,
-    navigateToTaskScreen: (taskId: Int) -> Unit
+    navigateToTaskScreen: (taskId: Int) -> Unit,
+    modifier: Modifier = Modifier
 ) {
-    LazyColumn {
+    LazyColumn(
+        modifier = modifier
+    ) {
         items(
             items = tasks,
             key = { task ->
@@ -67,15 +67,17 @@ fun DisplayTasks(
 fun TaskItem(
     toDoTask: ToDoTask, navigateToTaskScreen: (taskId: Int) -> Unit
 ) {
-    Surface(modifier = Modifier
-        .fillMaxWidth()
-        .padding(top = 58.dp),
+    Surface(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(vertical = 4.dp), // Adjusted padding here
         color = taskItemBackgroundColor,
         shape = RectangleShape,
         tonalElevation = TASK_ITEM_ELEVATION,
         onClick = {
             navigateToTaskScreen(toDoTask.id)
-        }) {
+        }
+    ) {
         Column(
             modifier = Modifier
                 .padding(all = LARGE_PADDING)
@@ -121,10 +123,13 @@ fun TaskItem(
 @Composable
 @Preview
 fun TaskItemPreview() {
-    TaskItem(toDoTask = ToDoTask(
-        id = 0,
-        title = "Title",
-        description = "This is the description",
-        priority = Priority.Medium
-    ), navigateToTaskScreen = {})
+    TaskItem(
+        toDoTask = ToDoTask(
+            id = 0,
+            title = "Title",
+            description = "This is the description",
+            priority = Priority.Medium
+        ),
+        navigateToTaskScreen = {}
+    )
 }
