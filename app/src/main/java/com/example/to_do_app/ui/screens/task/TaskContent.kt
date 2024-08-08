@@ -37,7 +37,7 @@ fun TaskContent(
             .padding(LARGE_PADDING)
             .fillMaxSize()
     ) {
-        Spacer(modifier = Modifier.padding(30.dp))
+        Spacer(modifier = Modifier.padding(36.dp))
         OutlinedTextField(
             modifier = Modifier.fillMaxWidth(),
             value = title, onValueChange = { onTitleChange(it) },

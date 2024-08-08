@@ -74,7 +74,7 @@ fun PriorityDropDown(
             modifier = Modifier
                 .weight(8f),
             text = priority.name,
-            style = MaterialTheme.typography.labelSmall
+            style = MaterialTheme.typography.labelLarge
         )
         IconButton(modifier = Modifier
             .alpha(0.60f)

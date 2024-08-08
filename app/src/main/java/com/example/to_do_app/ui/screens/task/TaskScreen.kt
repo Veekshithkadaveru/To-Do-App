@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import com.example.to_do_app.data.models.Priority
 import com.example.to_do_app.data.models.ToDoTask
@@ -18,6 +19,9 @@ fun TaskScreen(
     sharedViewModel: SharedViewModel,
     navigateToListScreen: (Action) -> Unit
 ) {
+    val title: String by sharedViewModel.title
+    val description: String by sharedViewModel.description
+    val priority: Priority by sharedViewModel.priority
     Scaffold(
         topBar = {
             TaskAppBar(
@@ -26,13 +30,19 @@ fun TaskScreen(
             )
         }, content = { paddingValues ->
             TaskContent(
-                title = "Kotlin",
-                onTitleChange = {},
-                description = "Hello World",
-                onDescriptionChange = {},
-                priority = Priority.Low,
+                title = title,
+                onTitleChange = {
+                    sharedViewModel.title.value = it
+                },
+                description = description,
+                onDescriptionChange = {
+                    sharedViewModel.description.value = it
+                },
+                priority = priority,
                 onPrioritySelected = {},
-                modifier = Modifier.padding(paddingValues).fillMaxSize()
+                modifier = Modifier
+                    .padding(paddingValues)
+                    .fillMaxSize()
             )
         }
     )
