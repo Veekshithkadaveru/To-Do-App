@@ -2,6 +2,7 @@ package com.example.to_do_app.components
 
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
@@ -10,6 +11,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material3.DropdownMenu
@@ -44,15 +46,20 @@ fun PriorityDropDown(
     var expanded by remember {
         mutableStateOf(false)
     }
-    val angle: Float by animateFloatAsState(targetValue = if (expanded) 180f else 0f, label = "")
+    val angle: Float by animateFloatAsState(
+        targetValue = if (expanded) 180f else 0f,
+        label = ""
+    )
     Row(
         modifier = Modifier
             .fillMaxWidth()
+            .background(MaterialTheme.colorScheme.background)
             .height(PRIORITY_DROP_DOWN_HEIGHT)
             .clickable { expanded = true }
             .border(
                 width = 1.dp,
-                color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.38f)
+                color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.38f),
+                shape = MaterialTheme.shapes.small
             ),
         verticalAlignment = Alignment.CenterVertically
     ) {
@@ -80,7 +87,7 @@ fun PriorityDropDown(
                 contentDescription = stringResource(id = R.string.dropdown_icon)
             )
         }
-        DropdownMenu(modifier = Modifier.fillMaxWidth(),
+        DropdownMenu(modifier = Modifier.fillMaxWidth(0.94f),
             expanded = expanded,
             onDismissRequest = { expanded = false }
         ) {

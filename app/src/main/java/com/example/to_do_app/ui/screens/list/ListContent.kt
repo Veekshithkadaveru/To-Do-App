@@ -58,7 +58,7 @@ fun DisplayTasks(
                 task.id
             }
         ) { task ->
-            TaskItem(toDoTask = task, navigateToTaskScreen)
+            TaskItem(toDoTask = task, navigateToTaskScreen=navigateToTaskScreen)
         }
     }
 }
@@ -122,7 +122,7 @@ fun TaskItem(
 
 @Composable
 @Preview
-fun TaskItemPreview() {
+private fun TaskItemPreview() {
     TaskItem(
         toDoTask = ToDoTask(
             id = 0,

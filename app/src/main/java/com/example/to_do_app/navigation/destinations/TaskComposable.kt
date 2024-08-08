@@ -6,10 +6,9 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavType
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
-import com.example.to_do_app.ui.screens.task.TaskAppBar
+import com.example.to_do_app.ui.screens.task.TaskScreen
 import com.example.to_do_app.ui.viewmodels.SharedViewModel
 import com.example.to_do_app.util.Action
-import com.example.to_do_app.util.Constants
 import com.example.to_do_app.util.Constants.TASK_ARGUMENT_KEY
 import com.example.to_do_app.util.Constants.TASK_SCREEN
 
@@ -26,8 +25,9 @@ fun NavGraphBuilder.taskComposable(
         val taskId = navBackStackEntry.arguments!!.getInt(TASK_ARGUMENT_KEY)
         sharedViewModel.getSelectedTask(taskId = taskId)
         val selectedTask by sharedViewModel.selectedTask.collectAsState()
-        TaskAppBar(
+        TaskScreen(
             selectedTask = selectedTask,
+            sharedViewModel = sharedViewModel,
             navigateToListScreen = navigateToListScreen
         )
     }
