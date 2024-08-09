@@ -47,7 +47,10 @@ fun NewTaskAppBar(navigateToListScreen: (Action) -> Unit) {
         },
 
         title = {
-            Text(text = stringResource(id = R.string.add_task), color = topAppBarContentColor)
+            Text(
+                text = stringResource(id = R.string.add_task),
+                color = topAppBarContentColor
+            )
         },
         colors = TopAppBarDefaults.topAppBarColors(
             containerColor = topAppBarBackgroundColor
@@ -71,7 +74,7 @@ fun BackAction(onBackClicked: (Action) -> Unit) {
 
 @Composable
 fun AddAction(onAddClicked: (Action) -> Unit) {
-    IconButton(onClick = { onAddClicked(Action.NO_ACTION) }) {
+    IconButton(onClick = { onAddClicked(Action.ADD) }) {
         Icon(
             imageVector = Icons.Filled.Check,
             contentDescription = stringResource(id = R.string.add_task),

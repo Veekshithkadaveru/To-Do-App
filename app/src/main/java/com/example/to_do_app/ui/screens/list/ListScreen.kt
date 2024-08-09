@@ -1,7 +1,6 @@
 package com.example.to_do_app.ui.screens.list
 
 import android.annotation.SuppressLint
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
@@ -26,9 +25,13 @@ fun ListScreen(
     LaunchedEffect(key1 = true) {
         sharedViewModel.getAllTasks()
     }
+    val action by sharedViewModel.action
     val allTasks by sharedViewModel.allTasks.collectAsState()
     val searchAppBarState: SearchAppBarState by sharedViewModel.searchAppBarState
     val searchTextState: String by sharedViewModel.searchTextState
+    sharedViewModel.handleDatabaseActions(action = action)
+
+
 
     Scaffold(
         topBar = {
