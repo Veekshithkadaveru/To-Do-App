@@ -54,7 +54,9 @@ fun TaskScreen(
                     sharedViewModel.description.value = it
                 },
                 priority = priority,
-                onPrioritySelected = {},
+                onPrioritySelected = {
+                    sharedViewModel.priority.value = it
+                },
                 modifier = Modifier
                     .padding(paddingValues)
                     .fillMaxSize()
