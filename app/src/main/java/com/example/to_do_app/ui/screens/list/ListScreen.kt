@@ -1,5 +1,4 @@
 import android.annotation.SuppressLint
-import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -16,7 +15,6 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.ui.Modifier
 import com.example.to_do_app.ui.screens.list.ListAppBar
 import com.example.to_do_app.ui.screens.list.ListContent
 import com.example.to_do_app.ui.viewmodels.SharedViewModel
@@ -36,6 +34,8 @@ fun ListScreen(
 
     val action by sharedViewModel.action
     val allTasks by sharedViewModel.allTasks.collectAsState()
+    val searchedTasks by sharedViewModel.searchedTasks.collectAsState()
+
     val searchAppBarState: SearchAppBarState by sharedViewModel.searchAppBarState
     val searchTextState: String by sharedViewModel.searchTextState
 
@@ -64,9 +64,11 @@ fun ListScreen(
         },
         content = { paddingValues ->
             ListContent(
-                tasks = allTasks,
+                allTasks = allTasks,
+                searchedTasks=searchedTasks,
+                searchAppBarState=searchAppBarState,
                 navigateToTaskScreen = navigateToTaskScreen,
-                modifier = Modifier.padding(paddingValues)
+
             )
         },
         floatingActionButton = {

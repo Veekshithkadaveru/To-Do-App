@@ -1,7 +1,12 @@
 package com.example.to_do_app.ui.screens.list
 
 import androidx.compose.foundation.Canvas
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.MaterialTheme
@@ -23,23 +28,45 @@ import com.example.to_do_app.ui.theme.TASK_ITEM_ELEVATION
 import com.example.to_do_app.ui.theme.taskItemBackgroundColor
 import com.example.to_do_app.ui.theme.taskItemColor
 import com.example.to_do_app.util.RequestState
+import com.example.to_do_app.util.SearchAppBarState
 
 @Composable
 fun ListContent(
-    tasks: RequestState<List<ToDoTask>>,
-    navigateToTaskScreen: (taskId: Int) -> Unit,
-    modifier: Modifier = Modifier
+    allTasks: RequestState<List<ToDoTask>>,
+    searchedTasks: RequestState<List<ToDoTask>>,
+    searchAppBarState: SearchAppBarState,
+    navigateToTaskScreen: (taskId: Int) -> Unit
 ) {
-    if (tasks is RequestState.Success) {
-        if (tasks.data.isEmpty()) {
-            EmptyContent()
-        } else {
-            DisplayTasks(
-                tasks = tasks.data,
-                navigateToTaskScreen = navigateToTaskScreen,
-                modifier = modifier
+    if (searchAppBarState == SearchAppBarState.TRIGGERED) {
+        if (searchedTasks is RequestState.Success) {
+            HandleListContent(
+                tasks = searchedTasks.data,
+                navigateToTaskScreen = navigateToTaskScreen
             )
         }
+    } else {
+        if (allTasks is RequestState.Success) {
+            HandleListContent(
+                tasks = allTasks.data,
+                navigateToTaskScreen = navigateToTaskScreen
+            )
+        }
+    }
+}
+
+@Composable
+fun HandleListContent(
+    tasks: List<ToDoTask>,
+    navigateToTaskScreen: (taskId: Int) -> Unit
+) {
+    if (tasks.isEmpty()) {
+        EmptyContent()
+    } else {
+        DisplayTasks(
+            tasks = tasks,
+            navigateToTaskScreen = navigateToTaskScreen,
+
+            )
     }
 }
 
@@ -50,7 +77,7 @@ fun DisplayTasks(
     modifier: Modifier = Modifier
 ) {
     LazyColumn(
-        modifier = modifier
+        modifier = modifier.padding(top = 56.dp)
     ) {
         items(
             items = tasks,
@@ -58,7 +85,7 @@ fun DisplayTasks(
                 task.id
             }
         ) { task ->
-            TaskItem(toDoTask = task, navigateToTaskScreen=navigateToTaskScreen)
+            TaskItem(toDoTask = task, navigateToTaskScreen = navigateToTaskScreen)
         }
     }
 }
