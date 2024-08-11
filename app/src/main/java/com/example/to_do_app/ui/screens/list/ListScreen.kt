@@ -65,11 +65,11 @@ fun ListScreen(
         content = { paddingValues ->
             ListContent(
                 allTasks = allTasks,
-                searchedTasks=searchedTasks,
-                searchAppBarState=searchAppBarState,
+                searchedTasks = searchedTasks,
+                searchAppBarState = searchAppBarState,
                 navigateToTaskScreen = navigateToTaskScreen,
 
-            )
+                )
         },
         floatingActionButton = {
             ListFab(onFabClicked = navigateToTaskScreen)
@@ -112,7 +112,7 @@ fun DisplaySnackBar(
         if (action != Action.NO_ACTION) {
             scope.launch {
                 val snackbarResult = snackbarHostState.showSnackbar(
-                    message = "${action.name}: $taskTitle",
+                    message = setMessage(action = action, taskTitle = taskTitle),
                     actionLabel = setActionLabel(action = action)
                 )
                 undoSelectedTask(
@@ -122,6 +122,13 @@ fun DisplaySnackBar(
                 )
             }
         }
+    }
+}
+
+private fun setMessage(action: Action, taskTitle: String): String {
+    return when (action) {
+        Action.DELETE_ALL -> "All Tasks Removed"
+        else -> "${action.name}:$taskTitle"
     }
 }
 
