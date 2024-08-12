@@ -79,10 +79,11 @@ dependencies {
     implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
 
 
-    implementation("androidx.fragment:fragment-ktx:1.7.1")
-    implementation("androidx.lifecycle:lifecycle-process:2.8.0")
-    implementation("androidx.lifecycle:lifecycle-service:2.8.0")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-savedstate:2.8.0")
+    implementation("androidx.fragment:fragment-ktx:1.8.2")
+    implementation("androidx.lifecycle:lifecycle-process:2.8.4")
+    implementation("androidx.lifecycle:lifecycle-service:2.8.4")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-savedstate:2.8.4")
+
 
 
     testImplementation(libs.junit)

@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.to_do_app.data.models.Priority
 import com.example.to_do_app.data.models.ToDoTask
+import com.example.to_do_app.data.repositories.DataStoreRepository
 import com.example.to_do_app.data.repositories.ToDoRepository
 import com.example.to_do_app.util.Action
 import com.example.to_do_app.util.Constants.MAX_TITLE_LENGTH
@@ -20,7 +21,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class SharedViewModel @Inject constructor(
-    private val repository: ToDoRepository
+    private val repository: ToDoRepository,
+    private val dataStoreRepository: DataStoreRepository
 ) : ViewModel() {
 
     val action: MutableState<Action> = mutableStateOf(Action.NO_ACTION)
