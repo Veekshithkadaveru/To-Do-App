@@ -13,7 +13,7 @@ val Pink40 = Color(0xFF7D5260)
 val LowPriorityColor = Color(0xFF00C980)
 val MediumPriorityColor = Color(0xFFFFC114)
 val HighPriorityColor = Color(0xFFFF4646)
-val NonePriorityColor = Color(0xFFFFFFFF)
+val NonePriorityColor = Color(0xFF9C9C9C)
 
 val Purple200 = Color(0xFFBB86FC)
 val Purple500 = Color(0xFF6200EE)
