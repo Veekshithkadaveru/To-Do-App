@@ -12,6 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import com.example.to_do_app.data.models.Priority
 import com.example.to_do_app.data.models.ToDoTask
+import com.example.to_do_app.ui.theme.LARGEST_PADDING
 import com.example.to_do_app.ui.viewmodels.SharedViewModel
 import com.example.to_do_app.util.Action
 
@@ -58,7 +59,7 @@ fun TaskScreen(
                     sharedViewModel.priority.value = it
                 },
                 modifier = Modifier
-                    .padding(paddingValues)
+                    .padding(LARGEST_PADDING)
                     .fillMaxSize()
             )
         }
