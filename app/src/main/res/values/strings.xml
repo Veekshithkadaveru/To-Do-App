@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">To-Do-App</string>
 
+    <string name="todo_app_logo">TODO app logo</string>
     <string name="delete_all_tasks">Remove all tasks?</string>
     <string name="delete_all_tasks_confirmation">Are you sure to remove all tasks?</string>
     <string name="delete_task">Remove \'%1$s\'?</string>
