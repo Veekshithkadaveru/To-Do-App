@@ -63,7 +63,7 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
     //Compose Dependency
-    implementation("androidx.navigation:navigation-compose:2.7.7")
+    implementation("androidx.navigation:navigation-compose:2.8.4")
     // Room
     implementation("androidx.room:room-runtime:2.6.1")
     implementation("androidx.room:room-ktx:2.6.1")
@@ -79,10 +79,10 @@ dependencies {
     implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
 
 
-    implementation("androidx.fragment:fragment-ktx:1.8.2")
-    implementation("androidx.lifecycle:lifecycle-process:2.8.4")
-    implementation("androidx.lifecycle:lifecycle-service:2.8.4")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-savedstate:2.8.4")
+    implementation("androidx.fragment:fragment-ktx:1.8.5")
+    implementation("androidx.lifecycle:lifecycle-process:2.8.7")
+    implementation("androidx.lifecycle:lifecycle-service:2.8.7")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-savedstate:2.8.7")
 
 
 
@@ -93,6 +93,11 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+    testImplementation("io.mockk:mockk:1.13.5")
+    testImplementation ("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.9.0")
+    testImplementation ("app.cash.turbine:turbine:0.12.1")
+
+
 }
 kapt {
     correctErrorTypes = true
